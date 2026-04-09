@@ -1,25 +1,36 @@
-package models 
+// Package models define as estruturas de dados da aplicação
+package models
 
 import "time"
 
-// Usuario representa a estrutura de um usuario no sistema
-// As tags 'db' indicam como os campos devem ser mapeados para o banco de dados
-
+// User representa um usuário no sistema
+// As tags `db` mapeiam para as colunas do banco
 type User struct {
-	ID        	  int       `db:"id"`           	// Identificador unico do usuario
-	Email	  	  string    `db:"email"`   		   	// Email unico
-	PasswordHash  string    `db:"password_hash"`   	// Senha do usuario (deve ser armazenada de forma segura, ex: hash)
-	CreatedAt time.Time `db:"created_at"`        	// Data e hora de criacao do usuario
+	ID           int       `db:"id"`
+	Email        string    `db:"email"`
+	PasswordHash string    `db:"password_hash"` // NUNCA armazenar senha em texto!
+	Name         string    `db:"name"`
+	CreatedAt    time.Time `db:"created_at"`
 }
 
-// LoginRequest representa a estrutura dos dados recebidos na requisicao de login
+// LoginRequest representa os dados enviados no login
+// Separamos para não expor campos internos como ID ou CreatedAt
 type LoginRequest struct {
-	Email    string `json:"email"`    // Email do usuario
-	Password string `json:"password"` // Senha do usuario
+	Email    string
+	Password string // Senha em texto (só existe na memória, temporariamente)
 }
 
-// UserPublic representa a estrutura dos dados do usuario que serao expostos na resposta da API
+// LoginResponse é o que retornamos após login bem-sucedido
+type LoginResponse struct {
+	Success bool
+	Message string
+	User    *UserPublic // Dados públicos do usuário
+}
+
+// UserPublic contém apenas dados seguros para expor
+// NUNCA incluir password_hash aqui!
 type UserPublic struct {
-	ID    int    `json:"id"`    // Identificador unico do usuario
-	Email string `json:"email"` // Email do usuario
+	ID    int
+	Email string
+	Name  string
 }
