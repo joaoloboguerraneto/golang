@@ -1,0 +1,38 @@
+# Binarios
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+main
+
+# Arquivos de teste
+*.test
+
+# Arquivos de cobertura
+*.out
+coverage.txt
+
+# Arquivos de dependencias
+vendor/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Sistema
+.DS_Store
+Thumbs.db
+
+# Ambiente
+.env
+*.env.local
+
+# Logs
+*.log
+logs/
+
+# Dados locais do PostgreSQL (se rodar localmente)
+postgres_data/

@@ -1,0 +1,17 @@
+# Dockerfile para PostgreSQL
+FROM postgres:15-alpine
+
+# Definir variaveis de ambiente padrao
+ENV POSTGRES_DB=authdb
+ENV POSTGRES_USER=postgres
+ENV POSTGRES_PASSWORD=postgres
+
+# Copiar script de inicializacao (opcional)
+COPY init.sql /docker-entrypoint-initdb.d/
+
+# Expor porta
+EXPOSE 5432
+
+# Healthcheck
+HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
+    CMD pg_isready -U postgres -d authdb || exit 1
