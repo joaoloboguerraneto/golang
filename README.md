@@ -1,7 +1,5 @@
 # Curso de Programação em Go (Golang)
 
-> De zero a criar aplicações web — Um guia completo para iniciantes
-
 ---
 
 ## Índice
@@ -60,7 +58,7 @@ Este curso foi criado para quem **nunca programou** e quer aprender Go (Golang) 
 
 ### O que é Programação?
 
-Programação é simplesmente **dar instruções para o computador**. O computador é muito rápido, mas muito "burro" — ele faz exatamente o que você mandar, nem mais, nem menos.
+Programação é simplesmente **dar instruções para o computador**. O computador é muito rápido, mas muito "burro"ele faz exatamente o que você mandar, nem mais, nem menos.
 
 Quando você programa, você escreve um "roteiro" que o computador segue passo a passo.
 
